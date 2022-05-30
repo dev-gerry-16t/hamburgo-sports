@@ -1,14 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @font-face {
-  font-family: Cheetah;
-  src: url(../assets/font/Cheetah_Kick.otf);
+  font-family: "Cheetah";
+  src: url("/font/Cheetah_Kick.otf");
 }
 
 body {
   margin: 0px;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, Lato;
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, Lato,
+    "Cheetah";
   box-sizing: border-box;
 }
 
