@@ -15,7 +15,7 @@ const ComponentReservation = () => {
     description: "",
     checkAllowNotify: false,
   };
-  const [selectPeople, setSelectPeople] = useState(null);
+  const [selectPeople, setSelectPeople] = useState("");
   const [dateSchedule, setDateSchedule] = useState("");
   const [timeSchedule, setTimeSchedule] = useState("");
   const [visibleStep1, setVisibleStep1] = useState(1);
@@ -87,8 +87,6 @@ const ComponentReservation = () => {
     }
   }, [visibleStep1]);
 
-  console.log("seconds", seconds);
-  console.log(timeSchedule);
   return (
     <div className="reservation">
       <h1 className="title-section">Reservación</h1>
@@ -121,15 +119,18 @@ const ComponentReservation = () => {
                   placeholder="Personas"
                   onChange={(value) => {
                     setSelectPeople(value.target.value);
-                    console.log("value", value.target.value);
                   }}
                 >
-                  <option disabled selected value="">
+                  <option disabled value="">
                     -- Personas --
                   </option>
                   <option value="1">1 persona</option>
                   {personSelect.map((row) => {
-                    return <option value={row}>{row} personas</option>;
+                    return (
+                      <option key={`key-${row}`} value={row}>
+                        {row} personas
+                      </option>
+                    );
                   })}
                   <option value="21">Evento especial</option>
                 </select>
