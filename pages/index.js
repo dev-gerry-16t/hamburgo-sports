@@ -3,6 +3,7 @@ import Image from "next/image";
 import PrincipalImg from "../assets/img/principal_picture.png";
 import AboutUs from "../assets/img/about_us.jpg";
 import ComponentReservation from "../components/componentReservation";
+import ComponentMenu from "../components/componentMenu";
 
 export default function Home() {
   return (
@@ -72,6 +73,7 @@ export default function Home() {
                 </div>
               </div>
               <ComponentReservation />
+              <ComponentMenu/>
             </div>
           </div>
         </main>

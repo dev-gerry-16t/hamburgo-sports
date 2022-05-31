@@ -1,22 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @font-face {
   font-family: "Cheetah";
   src: url("/font/Cheetah_Kick.otf");
+}
+
+@font-face {
+  font-family: "Simply_Olive";
+  src: url("/font/Simply_Olive.ttf");
 }
 
 body {
   margin: 0px;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, Lato,
-    "Cheetah";
+    "Cheetah", "Inter", "Simply_Olive";
   box-sizing: border-box;
 }
 
 :root {
   --color-title-primary: #d11111;
+  --color-title-secondary: #ffffff;
   --color-button-primary: #d11111;
   --color-border-primary: #000000;
+  --color-border-pricing: #555555;
   --color-background: #000000;
   --color-background-sections: #ffffff;
   --color-font-primary: #000000;
