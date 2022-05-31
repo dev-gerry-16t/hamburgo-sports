@@ -349,5 +349,112 @@
         }
       }
     }
+    .menu-container {
+      margin-top: 6em;
+      .title-section {
+        text-align: center;
+        font-family: "Cheetah";
+        font-size: 3.125em;
+        font-weight: 400;
+        margin: 0px 0px 0.8em 0px;
+        color: var(--color-title-secondary);
+      }
+      .content-menu {
+        display: grid;
+        grid-template-columns: 10em 1fr;
+        min-height: 40em;
+        .aside-left-menu {
+          position: relative;
+          background: var(--color-background);
+          overflow: hidden;
+          .image-aside-menu {
+            position: absolute;
+            width: 100%;
+          }
+          .font-aside-menu {
+            position: absolute;
+            width: 40em;
+            transform: rotate(-90deg);
+            display: flex;
+            justify-content: center;
+            left: -15em;
+            bottom: 12.5em;
+            .title-aside-menu {
+              color: var(--color-font-secondary);
+              font-family: "Simply_Olive";
+              font-size: 6em;
+              font-weight: 400;
+            }
+          }
+        }
+        .table-local-menu {
+          padding: 2em;
+          display: grid;
+          grid-template-rows: 5em 1fr;
+          background: var(--color-background-sections);
+          .local-menu {
+            display: flex;
+            justify-content: space-around;
+            column-gap: 2em;
+            span {
+              cursor: pointer;
+              opacity: 0.3;
+            }
+          }
+          .pricing-menu {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 1em;
+            column-gap: 1em;
+            padding: 2em;
+            .container-pricing {
+              padding: 1em;
+              .pricing {
+                position: relative;
+                border: 1px solid var(--color-border-pricing);
+                border-radius: 13px;
+                .food-dishes {
+                  position: absolute;
+                  top: -30px;
+                  left: 30px;
+                  background: var(--color-background-sections);
+                  padding: 0px 5px;
+                  h1 {
+                    margin: 0px;
+                    font-family: "Simply_Olive";
+                    color: var(--color-title-primary);
+                    font-size: 3em;
+                  }
+                }
+                .dishes {
+                  padding: 2em 1em;
+                  display: flex;
+                  flex-direction: column;
+                  row-gap: 1em;
+                  .dishes-card {
+                    display: flex;
+                    justify-content: space-between;
+                    .dishes-info {
+                      font-family: "Inter";
+                      width: 70%;
+                      h3 {
+                        font-weight: 700;
+                        margin: 0px;
+                        font-size: 1em;
+                      }
+                      span {
+                      }
+                    }
+                    .dishes-price {
+                      font-weight: 900;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
