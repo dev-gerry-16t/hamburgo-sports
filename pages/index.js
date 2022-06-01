@@ -4,6 +4,7 @@ import PrincipalImg from "../assets/img/principal_picture.png";
 import AboutUs from "../assets/img/about_us.jpg";
 import ComponentReservation from "../components/componentReservation";
 import ComponentMenu from "../components/componentMenu";
+import ComponentGallery from "../components/componentGallery";
 
 export default function Home() {
   return (
@@ -51,29 +52,34 @@ export default function Home() {
               <div className="eat-content-image"></div>
             </div>
             <div className="container-info">
-              <div className="about-us">
-                <div className="about-us-1">
-                  <div className="description">
-                    <h2>Sobre nosotros</h2>
-                    <span>
-                      Hamburgo sports trae una idea original combinando el mejor
-                      sabor y entretenimiento para los amantes del deporte. El
-                      restaurante ofrece diferentes tipos de comida y postres
-                      deliciosos ideales para disfrutar mientras miras tu evento
-                      deportivo favorito
-                    </span>
+              <div className="container-info-1">
+                <div className="about-us">
+                  <div className="about-us-1">
+                    <div className="description">
+                      <h2>Sobre nosotros</h2>
+                      <span>
+                        Hamburgo sports trae una idea original combinando el
+                        mejor sabor y entretenimiento para los amantes del
+                        deporte. El restaurante ofrece diferentes tipos de
+                        comida y postres deliciosos ideales para disfrutar
+                        mientras miras tu evento deportivo favorito
+                      </span>
+                    </div>
+                  </div>
+                  <div className="about-us-2">
+                    <img
+                      className="image-container"
+                      src="./about_us.jpg"
+                      alt="sobre-nosotros"
+                    ></img>
                   </div>
                 </div>
-                <div className="about-us-2">
-                  <img
-                    className="image-container"
-                    src="./about_us.jpg"
-                    alt="sobre-nosotros"
-                  ></img>
-                </div>
+                <ComponentReservation />
+                <ComponentMenu />
               </div>
-              <ComponentReservation />
-              <ComponentMenu/>
+              <div className="container-info-2">
+                <ComponentGallery />
+              </div>
             </div>
           </div>
         </main>
