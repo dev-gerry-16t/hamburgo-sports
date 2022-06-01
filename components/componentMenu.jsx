@@ -43,9 +43,7 @@ const ComponentMenu = () => {
         <div className="table-local-menu">
           <div className="local-menu">
             <span
-              style={{
-                opacity: "1",
-              }}
+              className="select"
             >
               <img src="logo_wings.png" alt="Wings" />
             </span>

@@ -13,6 +13,10 @@ export default function Home() {
         <title>Hamburgo Sports</title>
         <meta name="description" content="Restaurante-bar" />
         <link rel="icon" href="/favicon.ico" />
+        {/* <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        /> */}
       </Head>
       <div>
         <main className="container">
@@ -79,6 +83,81 @@ export default function Home() {
               </div>
               <div className="container-info-2">
                 <ComponentGallery />
+                <div className="container-location">
+                  <div className="location">
+                    <div>
+                      <h1>Ubicación</h1>
+                      <span>
+                        Hamburgo 301, Juárez, Cuauhtémoc, 06600 Juárez, CDMX
+                      </span>
+                    </div>
+                  </div>
+                  <div className="map-location">
+                    <iframe
+                      id="gmap_canvas"
+                      src="https://maps.google.com/maps?q=Hamburgo%20sports&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                      frameBorder={0}
+                      scrolling="no"
+                      marginHeight={0}
+                      marginWidth={0}
+                    />
+                  </div>
+                </div>
+                <footer>
+                  <img
+                    className="image-footer-left"
+                    src="./soccer_ball.png"
+                    alt="background_ball"
+                  />
+                  <img
+                    className="image-footer-right"
+                    src="./soccer_ball.png"
+                    alt="background_ball"
+                  />
+                  <div className="container-footer">
+                    <div>
+                      <h3>Horarios</h3>
+                      <p>
+                        Lunes - Miércoles
+                        <br />
+                        12pm - 9pm
+                      </p>
+                      <p>
+                        Jueves - Viernes
+                        <br />
+                        12pm - 10pm
+                      </p>
+                      <p>
+                        Sábado
+                        <br />
+                        12pm - 9pm
+                      </p>
+                    </div>
+                    <div>
+                      <h3>Info</h3>
+                      <p>Términos y Condiciones</p>
+                      <p>Aviso de privacidad</p>
+                      <p>Contactanos</p>
+                      <p>Misión y Visión</p>
+                    </div>
+                    <div>
+                      <h3>Dirección</h3>
+                      <p>
+                        Hamburgo 301, Juárez, Cuauhtémoc, 06600 Juárez, CDMX
+                      </p>
+                    </div>
+                    <div>
+                      <h3>Más</h3>
+                      <p>Únete a nuestro equipo</p>
+                      <p>Eventos y fiestas privadas</p>
+                      <p>Galería de eventos</p>
+                      <p>Promociones</p>
+                    </div>
+                  </div>
+                  <div className="copyright">
+                    © 2022 Hamburgo Sports. Todos los derechos reservados.
+                  </div>
+                </footer>
               </div>
             </div>
           </div>
