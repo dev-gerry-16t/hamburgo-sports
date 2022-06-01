@@ -11,12 +11,12 @@ export default function Home() {
     <div>
       <Head>
         <title>Hamburgo Sports</title>
-        <meta name="description" content="Restaurante-bar" />
+        <meta name="description" content="Los mejores eventos deportivos sólo en Hamburgo Sports Restaurente - Bar" />
         <link rel="icon" href="/favicon.ico" />
-        {/* <meta
+        <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
-        /> */}
+        />
       </Head>
       <div>
         <main className="container">
@@ -139,6 +139,7 @@ export default function Home() {
                       <p>Aviso de privacidad</p>
                       <p>Contactanos</p>
                       <p>Misión y Visión</p>
+                      <p>Tel: 55 5086 8161</p>
                     </div>
                     <div>
                       <h3>Dirección</h3>

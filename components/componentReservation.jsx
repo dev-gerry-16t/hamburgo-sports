@@ -6,6 +6,8 @@ import "moment/locale/es";
 const personSelect = [
   2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
 ];
+let intervalCount = null;
+
 const ComponentReservation = () => {
   const initialStates = {
     name: "",
@@ -19,6 +21,8 @@ const ComponentReservation = () => {
   const [dateSchedule, setDateSchedule] = useState("");
   const [timeSchedule, setTimeSchedule] = useState("");
   const [visibleStep1, setVisibleStep1] = useState(1);
+  const [loadApi, setLoadApi] = useState(false);
+  const [finishReservation, setFinishReservation] = useState(false);
   const [minutes, setMinutes] = useState(5);
   const [seconds, setSeconds] = useState(0);
   const [startCount, setStartCount] = useState(false);
@@ -29,8 +33,19 @@ const ComponentReservation = () => {
     return nowDate;
   };
 
+  const handlerCleanProperties = () => {
+    clearInterval(intervalCount);
+    setVisibleStep1(1);
+    setSelectPeople("");
+    setDateSchedule("");
+    setTimeSchedule("");
+    setMinutes(5);
+    setSeconds(0);
+    setStartCount(false);
+    setDataForm(initialStates);
+  };
+
   const handlerInitCount = () => {
-    let intervalCount = null;
     let count = seconds;
     let countMinutes = minutes;
     intervalCount = setInterval(() => {
@@ -43,15 +58,7 @@ const ComponentReservation = () => {
       }
 
       if (count === 0 && countMinutes === 0) {
-        clearInterval(intervalCount);
-        setVisibleStep1(1);
-        setSelectPeople("");
-        setDateSchedule("");
-        setTimeSchedule("");
-        setMinutes(5);
-        setSeconds(0);
-        setStartCount(false);
-        setDataForm(initialStates);
+        handlerCleanProperties();
       }
     }, 1000);
   };
@@ -180,148 +187,205 @@ const ComponentReservation = () => {
           </div>
         )}
         {visibleStep1 === 2 && (
-          <div className="detail-reservation">
-            <div className="time-loading">
-              <span>
-                Debido a la disponibilidad limitada podemos reservar esta mesa
-                para usted durante{" "}
-                <strong>
-                  {`${minutes === 0 ? "00" : minutes}:${
-                    seconds < 10 ? "0" + seconds : seconds
-                  }`}{" "}
-                  minutos
-                </strong>
-                .
-              </span>
-            </div>
-            <div className="info-reservation">
-              <div className="left-section">
-                <div className="info-components">
-                  <input
-                    type="text"
-                    placeholder="Nombre"
-                    value={dataForm.name}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setDataForm({
-                        ...dataForm,
-                        name: value,
-                      });
-                    }}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Apellidos"
-                    value={dataForm.lastName}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setDataForm({
-                        ...dataForm,
-                        lastName: value,
-                      });
-                    }}
-                  />
-                  <input
-                    name="phone"
-                    type="number"
-                    placeholder="Teléfono"
-                    value={dataForm.phoneNumber}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setDataForm({
-                        ...dataForm,
-                        phoneNumber: value,
-                      });
-                    }}
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Correo"
-                    value={dataForm.email}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setDataForm({
-                        ...dataForm,
-                        email: value,
-                      });
-                    }}
-                  />
-                  <textarea
-                    value={dataForm.description}
-                    name="description"
-                    placeholder="Agregar una solicitud especial (opcional)"
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setDataForm({
-                        ...dataForm,
-                        description: value,
-                      });
-                    }}
-                  />
+          <>
+            {finishReservation === false ? (
+              <div className="detail-reservation">
+                <div className="time-loading">
+                  <span>
+                    Debido a la disponibilidad limitada podemos reservar esta
+                    mesa para usted durante{" "}
+                    <strong>
+                      {`${minutes === 0 ? "00" : minutes}:${
+                        seconds < 10 ? "0" + seconds : seconds
+                      }`}{" "}
+                      minutos
+                    </strong>
+                    .
+                  </span>
                 </div>
-                <div className="check-box-section">
-                  <label className="input-checkbox">
-                    <input
-                      type="checkbox"
-                      checked={dataForm.checkAllowNotify}
-                      onChange={() => {
-                        setDataForm({
-                          ...dataForm,
-                          checkAllowNotify: !dataForm.checkAllowNotify,
-                        });
-                      }}
-                    ></input>
-                    Deseo recibir notificaciones de ofertas, actualizaciones y
-                    nuevos platillos de Hamburgo Sports
-                  </label>
+                <div className="info-reservation">
+                  {loadApi === true && (
+                    <div className="content-loading">
+                      <div className="loading">
+                        <p>Reservando</p>
+                        <span></span>
+                      </div>
+                    </div>
+                  )}
+                  <div className="left-section">
+                    <div className="info-components">
+                      <input
+                        type="text"
+                        placeholder="Nombre"
+                        value={dataForm.name}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setDataForm({
+                            ...dataForm,
+                            name: value,
+                          });
+                        }}
+                      />
+                      <input
+                        type="text"
+                        placeholder="Apellidos"
+                        value={dataForm.lastName}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setDataForm({
+                            ...dataForm,
+                            lastName: value,
+                          });
+                        }}
+                      />
+                      <input
+                        name="phone"
+                        type="number"
+                        placeholder="Teléfono"
+                        value={dataForm.phoneNumber}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setDataForm({
+                            ...dataForm,
+                            phoneNumber: value,
+                          });
+                        }}
+                      />
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Correo"
+                        value={dataForm.email}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setDataForm({
+                            ...dataForm,
+                            email: value,
+                          });
+                        }}
+                      />
+                      <textarea
+                        value={dataForm.description}
+                        name="description"
+                        placeholder="Agregar una solicitud especial (opcional)"
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setDataForm({
+                            ...dataForm,
+                            description: value,
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className="check-box-section">
+                      <label className="input-checkbox">
+                        <input
+                          type="checkbox"
+                          checked={dataForm.checkAllowNotify}
+                          onChange={() => {
+                            setDataForm({
+                              ...dataForm,
+                              checkAllowNotify: !dataForm.checkAllowNotify,
+                            });
+                          }}
+                        ></input>
+                        Deseo recibir notificaciones de ofertas, actualizaciones
+                        y nuevos platillos de Hamburgo Sports
+                      </label>
+                    </div>
+                  </div>
+                  <div className="detail-step-1">
+                    <div className="detail-top">
+                      <div className="top-information">
+                        <strong>Hamburgo Sports</strong>
+                        <br />
+                        <p>
+                          <i className="fa fa-calendar" aria-hidden="true"></i>{" "}
+                          <span>
+                            {moment(dateSchedule, "YYYY-MM-DD").format(
+                              "dddd, LL"
+                            )}
+                          </span>
+                        </p>
+                        <p>
+                          <i className="fa fa-clock-o" aria-hidden="true"></i>{" "}
+                          <span>
+                            {" "}
+                            {moment(timeSchedule, "hh:mm").format("hh:mm a")}
+                          </span>
+                        </p>
+                        <p>
+                          <i className="fa fa-user-o" aria-hidden="true"></i>{" "}
+                          <span>{handlerGetNumberPerson(selectPeople)}</span>
+                        </p>
+                      </div>
+                      <div>
+                        <strong>¿Que saber antes de ir?</strong>
+                        <br />
+                        <p>
+                          Gracias por elegirnos, si tus planes cambian, por
+                          favor háznoslo saber con anticipación.
+                        </p>
+                        <p>
+                          Llámanos al 55 5086 8161 para consultas o eventos
+                          especiales. En Hamburgo Sports valoramos tu
+                          preferencia y haremos todo lo posible para satisfacer
+                          todas las solicitudes.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="detail-bottom">
+                      <button
+                        onClick={async () => {
+                          setLoadApi(true);
+                          const createReservation = await fetch(
+                            `${window.location.href}api/reservation`,
+                            {
+                              method: "POST",
+                              body: JSON.stringify({
+                                ...dataForm,
+                                checkAllowNotify:
+                                  dataForm.checkAllowNotify === true
+                                    ? "Si"
+                                    : "No",
+                                selectPeople:
+                                  handlerGetNumberPerson(selectPeople),
+                                dateSchedule: moment(
+                                  dateSchedule,
+                                  "YYYY-MM-DD"
+                                ).format("dddd, LL"),
+                                timeSchedule: moment(
+                                  timeSchedule,
+                                  "hh:mm"
+                                ).format("hh:mm a"),
+                              }),
+                            }
+                          );
+                          const response = await createReservation.json();
+                          setLoadApi(false);
+                          setFinishReservation(true);
+
+                          setTimeout(() => {
+                            handlerCleanProperties();
+                            setFinishReservation(false);
+                          }, 8000);
+                        }}
+                      >
+                        Confirmar reservación
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="detail-step-1">
-                <div className="detail-top">
-                  <div className="top-information">
-                    <strong>Hamburgo Sports</strong>
-                    <br />
-                    <p>
-                      <i className="fa fa-calendar" aria-hidden="true"></i>{" "}
-                      <span>
-                        {moment(dateSchedule, "YYYY-MM-DD").format("dddd, LL")}
-                      </span>
-                    </p>
-                    <p>
-                      <i className="fa fa-clock-o" aria-hidden="true"></i>{" "}
-                      <span>
-                        {" "}
-                        {moment(timeSchedule, "hh:mm").format("hh:mm a")}
-                      </span>
-                    </p>
-                    <p>
-                      <i className="fa fa-user-o" aria-hidden="true"></i>{" "}
-                      <span>{handlerGetNumberPerson(selectPeople)}</span>
-                    </p>
-                  </div>
-                  <div>
-                    <strong>¿Que saber antes de ir?</strong>
-                    <br />
-                    <p>
-                      Gracias por elegir cenar con nosotros en Hamburgo Sports.
-                      Si tus planes cambian, por favor háznoslo saber con
-                      anticipación.
-                    </p>
-                    <p>
-                      Llámanos al 000 000 0000 para consultas o eventos
-                      especiales. En Hamburgo Sports valoramos tu patrocinio y
-                      haremos todo lo posible para satisfacer todas las
-                      solicitudes.
-                    </p>
-                  </div>
-                </div>
-                <div className="detail-bottom">
-                  <button>Confirmar reservación</button>
-                </div>
+            ) : (
+              <div className="thankyou-page">
+                <h1>¡Gracias por tu preferencia!</h1>
+                <p>
+                  Tu reservación se realizó con éxito, ¡te esperamos pronto!.
+                </p>
               </div>
-            </div>
-          </div>
+            )}
+          </>
         )}
       </div>
     </div>
