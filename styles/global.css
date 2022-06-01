@@ -18,6 +18,9 @@ body {
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
 :root {
   --color-title-primary: #d11111;
   --color-title-secondary: #ffffff;
@@ -26,6 +29,7 @@ body {
   --color-border-pricing: #555555;
   --color-background: #000000;
   --color-background-sections: #ffffff;
+  --color-background--secondary: #EBEBEB;  
   --color-font-primary: #000000;
   --color-font-secondary: #ffffff;
 }
