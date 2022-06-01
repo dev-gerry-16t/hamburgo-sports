@@ -299,9 +299,137 @@
               }
             }
             .info-reservation {
+              position: relative;
               display: grid;
               grid-template-columns: 1fr 1fr;
               background: var(--color-background-sections);
+              .content-loading{
+                background: var(--color-background);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                opacity: 0.5;
+                .loading {
+                  width: 80px;
+                  height: 50px;
+                  position: relative;
+            
+                  p {
+                     top: 0;
+                     padding: 0;
+                     margin: 0;
+                     color: var(--color-title-primary);
+                     font-family: "Lato";
+                     animation: text 3.5s ease both infinite;
+                     font-size: 1.5em;
+                     letter-spacing: 1px;
+                     font-weight: 800;
+            
+                     @keyframes text {
+                        0% {
+                           letter-spacing: 1px;
+                           transform: translateX(0px);
+                        }
+            
+                        40% {
+                           letter-spacing: 2px;
+                           transform: translateX(26px);
+                        }
+            
+                        80% {
+                           letter-spacing: 1px;
+                           transform: translateX(32px);
+                        }
+            
+                        90% {
+                           letter-spacing: 2px;
+                           transform: translateX(0px);
+                        }
+            
+                        100% {
+                           letter-spacing: 1px;
+                           transform: translateX(0px);
+                        }
+                     }
+                  }
+                  span {
+                     background-color: var(--color-title-primary);
+                     border-radius: 50px;
+                     display: block;
+                     height: 16px;
+                     width: 16px;
+                     bottom: 0;
+                     position: absolute;
+                     transform: translateX(64px);
+                     animation: loading 3.5s ease both infinite;
+            
+                     &:before {
+                        position: absolute;
+                        content: "";
+                        width: 100%;
+                        height: 100%;
+                        background-color: var(--color-title-secondary);
+                        border-radius: inherit;
+                        animation: loading2 3.5s ease both infinite;
+                     }
+            
+                     @keyframes loading {
+                        0% {
+                           width: 16px;
+                           transform: translateX(0px);
+                        }
+            
+                        40% {
+                           width: 100%;
+                           transform: translateX(0px);
+                        }
+            
+                        80% {
+                           width: 16px;
+                           transform: translateX(64px);
+                        } 
+            
+                        90% {
+                           width: 100%;
+                           transform: translateX(0px);
+                        }
+            
+                        100% {
+                           width: 16px;
+                           transform: translateX(0px);
+                        }
+                     }
+                     @keyframes loading2 {
+                        0% {
+                           transform: translateX(0px);
+                           width: 16px;
+                        }
+            
+                        40% {
+                           transform: translateX(0%);
+                           width: 80%;
+                        }
+            
+                       80% {
+                           width: 100%;
+                           transform: translateX(0px);
+                        }
+            
+                        90% {
+                           width: 80%;
+                        transform: translateX(15px);
+                        }
+                        100% {
+                           transform: translateX(0px);
+                           width: 16px;
+                        }
+                     }
+                  }
+               }
+              }
               .left-section {
                 padding: 1em 2em;
                 display: flex;
@@ -441,7 +569,24 @@
               .detail-step-1 {
                 font-size: 16px;
               }
-
+            }
+          }
+          .thankyou-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 0px 5em;
+            h1 {
+              font-family: "Cheetah";
+              color: var(--color-title-primary);
+              font-size: 5em;
+              font-weight: 400;
+              margin-bottom: 0px;
+            }
+            p {
+              font-family: "Lato";
+              font-size: 1.5em;
             }
           }
         }
@@ -798,13 +943,11 @@ footer {
 
   @media screen and (max-width: 600px) {
     .container-footer {
-      div{
+      div {
         width: 160px;
       }
     }
-
   }
-
 
   .copyright {
     position: absolute;
