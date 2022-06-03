@@ -29,7 +29,8 @@ body {
   --color-border-pricing: #555555;
   --color-background: #000000;
   --color-background-sections: #ffffff;
-  --color-background--secondary: #EBEBEB;  
+  --color-background--secondary: #ebebeb;
   --color-font-primary: #000000;
   --color-font-secondary: #ffffff;
+  --color-hover-menu: #f98c8c;
 }

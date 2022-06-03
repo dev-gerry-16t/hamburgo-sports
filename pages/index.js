@@ -5,13 +5,17 @@ import AboutUs from "../assets/img/about_us.jpg";
 import ComponentReservation from "../components/componentReservation";
 import ComponentMenu from "../components/componentMenu";
 import ComponentGallery from "../components/componentGallery";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div>
       <Head>
         <title>Hamburgo Sports</title>
-        <meta name="description" content="Los mejores eventos deportivos sólo en Hamburgo Sports Restaurente - Bar" />
+        <meta
+          name="description"
+          content="Los mejores eventos deportivos sólo en Hamburgo Sports Restaurente - Bar"
+        />
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="viewport"
@@ -24,17 +28,27 @@ export default function Home() {
             <div className="mask-main">
               <div className="menu-header">
                 <div className="menu">
-                  <span>Inicio</span>
-                  <span>Reservación</span>
-                  <span>Menu</span>
-                  <span>Galería</span>
-                  <span>Ubicación</span>
-                  <span>Cava VIP</span>
+                  <span>
+                    <Link href="/">Inicio</Link>
+                  </span>
+                  <span>
+                    <Link href="#reservacion-hamburgo-sports">Reservación</Link>
+                  </span>
+                  <span>
+                    <Link href="#menu-hamburgo-sports">Menu</Link>
+                  </span>
+                  <span>
+                    <Link href="#galeria-hamburgo-sports">Galería</Link>
+                  </span>
+                  <span>
+                    <Link href="#ubicacion-hamburgo-sports">Ubicación</Link>
+                  </span>
+                  {/* <span>Cava VIP</span>
                   <span>
                     <button className="button-secondary">
                       Pide para recoger
                     </button>
-                  </span>
+                  </span> */}
                 </div>
               </div>
               <div className="body-message">
@@ -83,7 +97,7 @@ export default function Home() {
               </div>
               <div className="container-info-2">
                 <ComponentGallery />
-                <div className="container-location">
+                <div id="ubicacion-hamburgo-sports" className="container-location">
                   <div className="location">
                     <div>
                       <h1>Ubicación</h1>

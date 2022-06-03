@@ -95,7 +95,7 @@ const ComponentReservation = () => {
   }, [visibleStep1]);
 
   return (
-    <div className="reservation">
+    <div id="reservacion-hamburgo-sports" className="reservation">
       <h1 className="title-section">Reservación</h1>
       <div className="component-reservation">
         <div className="steps-reservation">
