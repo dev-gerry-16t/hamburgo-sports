@@ -97,7 +97,10 @@ export default function Home() {
               </div>
               <div className="container-info-2">
                 <ComponentGallery />
-                <div id="ubicacion-hamburgo-sports" className="container-location">
+                <div
+                  id="ubicacion-hamburgo-sports"
+                  className="container-location"
+                >
                   <div className="location">
                     <div>
                       <h1>Ubicación</h1>
