@@ -2,7 +2,7 @@ import React from "react";
 
 const ComponentGallery = () => {
   return (
-    <div className="gallery-hamburgo">
+    <div id="galeria-hamburgo-sports" className="gallery-hamburgo">
       <h1 className="title-section">Galeria</h1>
       <div className="container-gallery">
         <div className="gallery-col-1">
