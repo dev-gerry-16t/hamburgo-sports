@@ -648,10 +648,33 @@
             }
           }
           .table-local-menu {
+            position: relative;
             padding: 2em;
             display: grid;
             grid-template-rows: 5em 1fr;
             background: var(--color-background-sections);
+            .next-step{
+              cursor: pointer;
+              position: absolute;
+              bottom: 10px;
+              right: 10px;
+              font-family: "Simply_Olive";
+              color: #284164;
+              font-size: 1.3em;
+              font-weight: 600;
+              background: var(--color-background-sections);
+            }
+            .back-step{
+              cursor: pointer;
+              position: absolute;
+              bottom: 10px;
+              left: 10px;
+              font-family: "Simply_Olive";
+              color: #284164;
+              font-size: 1.3em;
+              font-weight: 600;
+              background: var(--color-background-sections);
+            }
             .local-menu {
               display: flex;
               justify-content: space-around;
@@ -701,6 +724,8 @@
               row-gap: 1em;
               column-gap: 1em;
               padding: 2em;
+              max-height: 60vh;
+              overflow-y: scroll;
               .container-pricing {
                 padding: 1em;
                 .pricing {
