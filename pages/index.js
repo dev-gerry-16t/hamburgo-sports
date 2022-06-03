@@ -58,7 +58,9 @@ export default function Home() {
                   Disfruta de los mejores eventos deportivos
                   <br /> mientras degustas nuestros platillos
                 </span>
-                <button className="button-action">Nuestro menu</button>
+                <button className="button-action" onClick={()=>{
+                  window.location.href="#menu-hamburgo-sports";
+                }}>Nuestro menu</button>
               </div>
             </div>
             <div className="content-image"></div>
